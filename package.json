@@ -1,13 +1,8 @@
 {
   "name": "eslint-plugin-vnva",
-  "version": "0.0.0",
-  "description": "My eslint rules",
-  "keywords": [
-    "eslint",
-    "eslintplugin",
-    "eslint-plugin"
-  ],
+  "version": "0.0.1",
   "author": "Vyacheslav Ananev",
+  "description": "My eslint rules",
   "main": "./lib/index.js",
   "exports": "./lib/index.js",
   "scripts": {
@@ -34,5 +29,19 @@
   "peerDependencies": {
     "eslint": ">=7"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vnva/eslint-plugin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vnva/eslint-plugin/issues"
+  },
+  "homepage": "https://github.com/vnva/eslint-plugin#readme",
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "eslint-plugin",
+    "camelCase"
+  ],
 }
