@@ -1,8 +1,8 @@
 {
   "name": "@vnva/eslint-plugin",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "author": "Vyacheslav Ananev",
-  "description": "My eslint rules",
+  "description": "My eslint plugin",
   "main": "./lib/index.js",
   "exports": "./lib/index.js",
   "scripts": {
