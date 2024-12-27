@@ -1,4 +1,4 @@
-# vnva/space-in-generics
+# @vnva/space-in-generics
 
 Enforce consistent spacing inside generics.
 
