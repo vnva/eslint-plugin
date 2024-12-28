@@ -48,6 +48,14 @@ describe(RULE_NAME, () => {
     ruleTester.invalid({ code: 'const x: Array<string > = [];', output: (o) => expect(o).toMatchInlineSnapshot('"const x: Array<string> = [];"') });
     ruleTester.invalid({ code: 'const x: Array< string > = [];', output: (o) => expect(o).toMatchInlineSnapshot('"const x: Array<string> = [];"') });
 
+    ruleTester.invalid({ code: 'const x: Array< string | number> = [];', output: (o) => expect(o).toMatchInlineSnapshot('"const x: Array<string | number> = [];"') });
+    ruleTester.invalid({ code: 'const x: Array<string | number > = [];', output: (o) => expect(o).toMatchInlineSnapshot('"const x: Array<string | number> = [];"') });
+    ruleTester.invalid({ code: 'const x: Array< string | number > = [];', output: (o) => expect(o).toMatchInlineSnapshot('"const x: Array<string | number> = [];"') });
+
+    ruleTester.invalid({ code: 'type X = Array<{ a: string} & { b: number } >;', output: (o) => expect(o).toMatchInlineSnapshot('"type X = Array<{ a: string} & { b: number }>;"') });
+    ruleTester.invalid({ code: 'type X = Array< { a: string} & { b: number }>;', output: (o) => expect(o).toMatchInlineSnapshot('"type X = Array<{ a: string} & { b: number }>;"') });
+    ruleTester.invalid({ code: 'type X = Array< { a: string} & { b: number } >;', output: (o) => expect(o).toMatchInlineSnapshot('"type X = Array<{ a: string} & { b: number }>;"') });
+
     ruleTester.invalid({ code: 'const x: Map< string, number> = new Map();', output: (o) => expect(o).toMatchInlineSnapshot('"const x: Map<string, number> = new Map();"') });
     ruleTester.invalid({ code: 'const x: Map<string, number > = new Map();', output: (o) => expect(o).toMatchInlineSnapshot('"const x: Map<string, number> = new Map();"') });
     ruleTester.invalid({ code: 'const x: Map< string, number > = new Map();', output: (o) => expect(o).toMatchInlineSnapshot('"const x: Map<string, number> = new Map();"') });
@@ -73,6 +81,10 @@ describe(RULE_NAME, () => {
 
   it('Valid cases for similar problems, but solved with other rules', () => {
     // Solved by @stylistic/type-generic-spacing
-    ruleTester.valid({ code: 'type Nested <T> = Promise<Array<T>>;' });
+    ruleTester.valid({ code: 'type Nested <T> = Promise<Array<T>> ;' });
+
+    // Solved by @stylistic/space-infix-ops
+    ruleTester.valid({ code: 'type X = Array< | string | number>;' });
+    ruleTester.valid({ code: 'type X = Array< & { a: string} & { b: number }>;' });
   });
 });

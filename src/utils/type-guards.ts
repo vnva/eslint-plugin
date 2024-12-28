@@ -1,9 +1,13 @@
-import type { TSESTree } from '@typescript-eslint/utils';
+import { TSESTree } from '@typescript-eslint/utils';
 
-export function isOpenAngleBracketToken(token: TSESTree.Token): token is TSESTree.PunctuatorToken {
-  return token.value === '<';
+export function isOpenAngleBracketToken(token: TSESTree.Token | null): token is TSESTree.PunctuatorToken {
+  if (!token) return false;
+
+  return token.value === '<' && token.type === TSESTree.AST_TOKEN_TYPES.Punctuator;
 };
 
-export function isCloseAngleBracketToken(token: TSESTree.Token): token is TSESTree.PunctuatorToken {
-  return token.value === '>';
+export function isCloseAngleBracketToken(token: TSESTree.Token | null): token is TSESTree.PunctuatorToken {
+  if (!token) return false;
+
+  return token.value === '>' && token.type === TSESTree.AST_TOKEN_TYPES.Punctuator;
 }
