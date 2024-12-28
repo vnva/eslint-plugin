@@ -1,34 +1,89 @@
 # @vnva/space-in-generics
 
-Enforce consistent spacing inside generics.
+Enforce consistent spacing inside generic type parameters.
 
 ## Rule Details
 
-This rule aims to enforce consistent spacing inside generics.
+This rule enforces consistent spacing inside generic type parameters.
 
-Examples of **incorrect** code for this rule:
+### Examples with "**never**" (default)
+
+Examples of **incorrect** code:
 
 ```ts
-type Foo< T > = {
-  foo: T;
-};
+interface Foo< T > {
+  prop: T;
+}
+
+type Bar< T > = T;
+
+class Example< T > implements Interface< T > {}
+
+function example< T >(param: T): Array< T > {}
+
+const map = new Map< string, number >();
+
+type Nested< T > = Promise< Array< T > >;
 ```
 
-Examples of **correct** code for this rule:
+Examples of **correct** code:
+
 
 ```ts
-type Foo<T> = {
-  foo: T;
-};
+interface Foo<T> {
+  prop: T;
+}
+
+type Bar<T> = T;
+
+class Example<T> implements Interface<T> {}
+
+function example<T>(param: T): Array<T> {}
+
+const map = new Map<string, number>();
+
+type Nested<T> = Promise<Array<T>>;
+```
+
+### Examples with "**always**"
+
+Examples of **incorrect** code:
+
+```ts
+interface Foo<T> {
+  prop: T;
+}
+
+type Bar<T, U> = T;
+
+function example<T>(param: T): Array<T> {}
+
+const map = new Map<string,number>();
+```
+
+Examples of **correct** code:
+
+
+```ts
+interface Foo< T > {
+  prop: T;
+}
+
+type Bar< T, U > = T;
+
+function example< T >(param: T): Array< T > {}
+
+const map = new Map< string, number >();
 ```
 
 ### Options
 
-This rule has a string option.
+This rule has one option:
 
-- `"never"` (default) disallows spacing inside generics.
-- `"always"` enforces spacing inside generics.
+- "never" (default) - disallows spaces inside generic type parameters
+- "always" - requires spaces inside generic type parameters
 
-## When Not To Use It
+### When Not To Use It
+You can turn this rule off if you:
 
-If you don't want to enforce consistent spacing inside generics.
+Don't want to enforce consistent spacing in generic type parameters
