@@ -30,7 +30,9 @@ export default CONFIG
 
 ## TODO
 - [x] `space-in-generics`
-- [ ] `no-arrow-type-space`
+  - `type X = Array< string | number >;`
+- [ ] `no-array-type-space` 
+  - `const x: string [] = [];`
 
 ## License
 
